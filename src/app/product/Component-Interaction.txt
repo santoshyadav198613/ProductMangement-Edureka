@@ -1,0 +1,16 @@
+Steps to create a component
+1. ng g component <componentname>
+
+
+For Component Interaction
+1. create a property with Input decorator
+2. pass the input property from parent component
+3. To pass string pass value in ''
+
+For Output property
+1. Use when want to send data back to parent component
+2. create a function which will return/emit the value
+3. Create a function in parent component to handle the output
+
+use VieChild to get complete access or to create a local instance.
+use ViewChildren in case you have multiple compoenent of same type.

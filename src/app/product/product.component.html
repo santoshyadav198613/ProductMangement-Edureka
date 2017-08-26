@@ -1,32 +1,13 @@
 <h1>
   Welcome to product page
 </h1>
+{{product}}
+<input type="text" [value]="title">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        ID
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Price
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of productList">
-      <td>
-        {{product.id}}
-      </td>
-      <td>
-        {{product.name}}
-      </td>
-      <td>
-        {{product.price | currency}}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<app-productlist [productList]="products" [title]="'Test'" (getProduct)="getProductFromChild($event)" ></app-productlist>
+<app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
+<app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
+<app-productdetails [title]="title" ></app-productdetails>
+<!--  -->
+
+<button class="btn btn-primary" (click)="getProduct()">Get Product from Parent </button>

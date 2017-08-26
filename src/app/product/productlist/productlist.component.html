@@ -1,0 +1,36 @@
+<p>
+  productlist works!
+</p>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productList">
+      <td>
+        {{product.id}}
+      </td>
+      <td>
+        {{product.name}}
+      </td>
+      <td>
+        {{product.price | currency}}
+      </td>
+    </tr>
+  </tbody>
+</table> 
+
+
+<button class="btn btn-primary" (click)="getProducts()">Send Product</button>

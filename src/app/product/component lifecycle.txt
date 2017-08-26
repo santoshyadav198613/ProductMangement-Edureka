@@ -1,0 +1,4 @@
+1. constructor - always instance gets created first
+2. OnInit - When component gets initilized 
+3. OnChanges - When input properties gets changed
+4. doCheck - After Init and after every event is fired
