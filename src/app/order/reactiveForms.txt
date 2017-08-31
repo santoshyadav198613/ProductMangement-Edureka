@@ -1,0 +1,4 @@
+Steps to configure reactive forms
+1. import ReactiveFormsModule and add in imports array 
+2. import FormBuilder, FormGroup into component 
+3. Inject FormBuilder in constructor

@@ -14,37 +14,24 @@ import { Product } from '../service/product/product';
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
-  providers : []
+  providers: []
 })
 export class ProductComponent implements OnInit, DoCheck {
-  products: Product[];
-  title: string = 'Product Details';
-  product: string;
-  @ViewChild(ProductlistComponent)
-  productListComponent: ProductlistComponent;
-  @ViewChildren(ProductlistComponent)
-  productListComp: QueryList<ProductlistComponent>;
+  product = new Product();
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    console.log('product component is loaded');
-    this.products = this._productService.getProducts();
-  }
 
-
-  getProduct() {
-    this._productService.addProduct();
-    this.productListComponent.getProducts();
-    this.productListComp.forEach((data) => data.getProducts());
   }
 
   ngDoCheck() {
-    console.log('do check event is called from parent');
-    console.log(this.product);
+
   }
 
-  getProductFromChild(product: string) {
-    this.product = product;
+  submit() {
+    console.log(this.product);
+    this.product = new Product();
   }
+
 
 }

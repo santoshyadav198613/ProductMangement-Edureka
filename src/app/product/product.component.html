@@ -1,13 +1,33 @@
 <h1>
   Welcome to product page
 </h1>
-{{product}}
-<input type="text" [value]="title">
-
+<!-- {{product}}
+{{title}}
+<input type="text" [value]="title" [(ngModel)]="title"> -->
+<!-- 
 <app-productlist [productList]="products" [title]="'Test'" (getProduct)="getProductFromChild($event)" ></app-productlist>
 <app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
 <app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
-<app-productdetails [title]="title" ></app-productdetails>
+<app-productdetails [title]="title" ></app-productdetails> -->
 <!--  -->
+<!-- 
+<button class="btn btn-primary" (click)="getProduct()">Get Product from Parent </button> -->
+{{product | json}}
 
-<button class="btn btn-primary" (click)="getProduct()">Get Product from Parent </button>
+<form #productForm="ngForm" (submit)="submit()" novalidate>
+  <div class="form-group">
+    <input type="number" name="id" required class="form-control" [(ngModel)]="product.id" placeholder="ID" #productid="ngModel">
+  </div>
+  <div class="form-group">
+      <input type="text" minlength="4" maxlength="8" name="name" required class="form-control" [(ngModel)]="product.name" placeholder="Name" #productname="ngModel">
+  </div>
+  <div class="form-group">
+      <input type="number" name="price" required class="form-control" [(ngModel)]="product.price" placeholder="Price" #productprice="ngModel">
+  </div>
+  <div class="form-group">
+      <input type="text" name="imageUrl" required class="form-control" [(ngModel)]="product.imageUrl" placeholder="Image Url" #productImage="ngModel">
+  </div>
+  <div class="form-group">
+    <button type="submit"  [disabled]="productForm.invalid" class="btn btn-primary">Submit</button>
+  </div>
+</form>

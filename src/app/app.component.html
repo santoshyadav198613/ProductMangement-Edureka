@@ -1,5 +1,5 @@
 <!--The whole content below can be removed with the new code.-->
-<div *ngIf="isVisible" [innerHtml]="title" style="text-align:center">
+<!-- <div *ngIf="isVisible" [innerHtml]="title" style="text-align:center">
   <h1>
     Welcome to {{title}} -- Manged By {{productManger}}
 
@@ -17,6 +17,23 @@
 
 {{isVisible}}
 
-<button (click)="toggle()">Toggle</button>
+<button (click)="toggle()">Toggle</button> -->
 
-<app-product></app-product>
+<!-- <app-product></app-product>
+
+<app-order></app-order> -->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Product Management</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a [routerLink]="['/order']">Order</a></li>
+        <li><a routerLink="/product">Product</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<router-outlet></router-outlet>

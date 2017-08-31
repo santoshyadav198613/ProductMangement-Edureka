@@ -1,0 +1,70 @@
+<h1>
+  Order Form
+</h1>
+
+{{orderForm.value | json}}
+<form class="col-md-6" (submit)="submit()" [formGroup]="orderForm" novalidate>
+  <div class="form-group">
+    <input class="form-control" type="text" formControlName="firstName" placeholder="FirstName">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" formControlName="lastName" placeholder="LastName">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" formControlName="productName" placeholder="ProductName">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" formControlName="price" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" formControlName="qty" placeholder="Quantity">
+    {{orderForm.get('qty').errors | json}}
+  </div>
+  <div class="form-group" formGroupName="address">
+    <div>
+      <input class="form-control" type="text" formControlName="addressLine1" placeholder="Address Line1">
+    </div>
+    <div>
+      <input class="form-control" type="text" formControlName="addressLine2" placeholder="Address Line2">
+    </div>
+    <div>
+      <input class="form-control" type="text" formControlName="city" placeholder="City">
+    </div>
+    <div>
+      <input class="form-control" type="text" formControlName="zip" placeholder="Zip">
+    </div>
+  </div>
+  <div formArrayName="cards">
+    <button class="btn btn-primary" (click)="addCard()">Add</button>
+    <div *ngFor="let card of orderForm.controls.cards.controls;let i=index">
+     
+
+      <div class="panel-group" [formGroupName]="i">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4> Card {{i+1}}</h4>
+            <button *ngIf="i>0" (click)="removeCard(i)" class="btn btn-primary">Remove</button>
+          </div>
+          <div class="panel-body">
+            <div>
+              <input class="form-control" type="number" formControlName="cardNumber" placeholder="CardNumber">
+            </div>
+            <div>
+              <input class="form-control" type="number" formControlName="month" placeholder="Month">
+            </div>
+            <div>
+              <input class="form-control" type="number" formControlName="year" placeholder="Year">
+            </div>
+            <div>
+              <input class="form-control" type="number" formControlName="cvv" placeholder="CVV">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="orderForm.invalid" class="btn btn-primary">Submit</button>
+  </div>
+</form>
