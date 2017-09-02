@@ -4,9 +4,9 @@ import { Product } from './product';
 @Injectable()
 export class ProductService {
   products: Product[] = [
-    { id: 1, name: 'Product1', price: 100 },
-    { id: 2, name: 'Product2', price: 2000 },
-    { id: 3, name: 'Product3', price: 3000 }
+    { id: 1, name: 'Product1', price: 100, imageUrl: 'http://test.com' },
+    { id: 2, name: 'Product2', price: 2000, imageUrl: 'http://test.com' },
+    { id: 3, name: 'Product3', price: 3000, imageUrl: 'http://test.com' }
   ];
   constructor() { }
 
@@ -15,6 +15,6 @@ export class ProductService {
   }
 
   addProduct() {
-    this.products.push({ id: 4, name: 'Product4', price: 4000 });
+    this.products.push({ id: 4, name: 'Product4', price: 4000, imageUrl: 'http://test.com' });
   }
 }

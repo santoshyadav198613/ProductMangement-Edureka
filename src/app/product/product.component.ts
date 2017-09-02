@@ -18,10 +18,11 @@ import { Product } from '../service/product/product';
 })
 export class ProductComponent implements OnInit, DoCheck {
   product = new Product();
+  products: Product[];
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-
+    this.products = this._productService.getProducts();
   }
 
   ngDoCheck() {

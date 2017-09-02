@@ -1,40 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+
+import { RoutingModule } from './routing/routing.module';
+import { OrderModule } from './order/order.module';
+import { SharedModule } from './shared/shared.module';
+
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { ProductlistComponent } from './product/productlist/productlist.component';
-import { ProductdetailsComponent } from './product/productdetails/productdetails.component';
+
 import { API_CONFIG, APP_CONFIG } from './service/apiProvider/app.apiconfig';
 import { AppConfig } from './service/apiProvider/IAppConfig';
 import { ProductService } from './service/product/product.service';
-import { OrderComponent } from './order/order.component';
+
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './service/login/login.service';
+import { AuthGuard } from './service/guard/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    ProductlistComponent,
-    ProductdetailsComponent,
-    OrderComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: 'order', component: OrderComponent },
-      { path: 'product', component: ProductComponent },
-      { path: '', redirectTo: 'order', pathMatch: 'full' },
-      { path: '**', component: PagenotfoundComponent }
-    ])
+    SharedModule,
+    OrderModule,
+    RoutingModule
   ],
   providers: [{ provide: ProductService, useClass: ProductService },
-  { provide: APP_CONFIG, useValue: API_CONFIG }
+  { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

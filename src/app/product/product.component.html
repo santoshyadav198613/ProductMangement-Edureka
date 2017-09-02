@@ -7,7 +7,7 @@
 <!-- 
 <app-productlist [productList]="products" [title]="'Test'" (getProduct)="getProductFromChild($event)" ></app-productlist>
 <app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
-<app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
+
 <app-productdetails [title]="title" ></app-productdetails> -->
 <!--  -->
 <!-- 
@@ -31,3 +31,8 @@
     <button type="submit"  [disabled]="productForm.invalid" class="btn btn-primary">Submit</button>
   </div>
 </form>
+<hr>
+
+<app-productlist [productList]="products" (getProduct)="getProductFromChild($event)" ></app-productlist>
+
+<router-outlet></router-outlet>
