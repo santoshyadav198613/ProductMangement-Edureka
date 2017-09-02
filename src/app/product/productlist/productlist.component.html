@@ -24,10 +24,10 @@
         {{product.id}}
       </td>
       <td>
-        {{product.name}}
+        {{product.name | uppercase}}
       </td>
       <td>
-        {{product.price | currency}}
+        {{product.price | customcurrency  : "$" }}
       </td>
       <td>
         <button [routerLink]="['/product',product.id]" class="btn btn-primary">Details</button>

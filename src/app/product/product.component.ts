@@ -9,6 +9,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 
 import { ProductService } from '../service/product/product.service';
 import { Product } from '../service/product/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -19,10 +20,10 @@ import { Product } from '../service/product/product';
 export class ProductComponent implements OnInit, DoCheck {
   product = new Product();
   products: Product[];
-  constructor(private _productService: ProductService) { }
+  constructor(private _productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.products = this._productService.getProducts();
+    this.route.data.subscribe((data) => this.products = data['productList']);
   }
 
   ngDoCheck() {

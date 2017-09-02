@@ -7,6 +7,7 @@ import { ProductComponent } from './product.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { AuthGuard } from '../service/guard/auth.guard';
+import { ProductResolveGuard } from '../service/product/product-resolve.guard';
 
 @NgModule({
   imports: [
@@ -16,14 +17,18 @@ import { AuthGuard } from '../service/guard/auth.guard';
       [
         {
           path: '', component: ProductComponent, canActivate: [AuthGuard],
+          resolve: {
+            productList: ProductResolveGuard
+          },
           children: [
-            { path: ':id', component: ProductdetailsComponent  }
+            { path: ':id', component: ProductdetailsComponent }
           ]
         }
       ]
     )
   ],
   declarations: [ProductComponent, ProductlistComponent,
-    ProductdetailsComponent]
+    ProductdetailsComponent],
+  providers: [ProductResolveGuard]
 })
 export class ProductModule { }
