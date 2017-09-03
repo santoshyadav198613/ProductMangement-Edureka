@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 
@@ -10,8 +11,8 @@ export class ProductService {
   ];
   constructor() { }
 
-  getProducts(): Product[] {
-    return this.products;
+  getProducts():  Observable<Product[]> {
+    return Observable.of(this.products);
   }
 
   addProduct() {
