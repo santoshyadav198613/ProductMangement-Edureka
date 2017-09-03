@@ -1,6 +1,6 @@
 
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 import { APP_CONFIG } from '../apiProvider/app.apiconfig';
 import { AppConfig } from '../apiProvider/IAppConfig';
@@ -20,7 +20,14 @@ export class PostService {
   }
 
   addPost(post: Post) {
-    return this.http.post(this.apiEndPoint + 'posts', post);
+    let header = new HttpHeaders().set('token', 'thisisdummytoken').set('userToken', 'thisisuserToken');
+    return this.http.post(this.apiEndPoint + 'posts', post, { headers: header });
+  }
+
+
+  getPostsData() {
+    let request = new HttpRequest('GET', this.apiEndPoint + 'posts', { reportProgress: true });
+    return this.http.request(request);
   }
 
 }

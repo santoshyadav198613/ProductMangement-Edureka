@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './service/login/login.service';
 import { AuthGuard } from './service/guard/auth.guard';
 import { PostComponent } from './post/post.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptorService } from './service/httpinterceptor/api-interceptor.service';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { PostComponent } from './post/post.component';
     RoutingModule
   ],
   providers: [{ provide: ProductService, useClass: ProductService },
-  { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard
+  { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard,
+  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService , multi: true }
   ],
   bootstrap: [AppComponent]
 })
