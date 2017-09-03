@@ -14,12 +14,12 @@ export class AppComponent {
   productManger = 'Employee1';
   isVisible = false;
 
-  constructor(private _service: ProductService, @Inject(APP_CONFIG) config: AppConfig) {
+  constructor(@Inject(APP_CONFIG) config: AppConfig) {
       console.log(config);
   }
 
   toggle() {
-    this._service.addProduct();
+    
     this.isVisible = !this.isVisible;
   }
 }

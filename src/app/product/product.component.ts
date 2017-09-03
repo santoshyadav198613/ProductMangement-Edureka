@@ -10,6 +10,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductService } from '../service/product/product.service';
 import { Product } from '../service/product/product';
 import { ActivatedRoute } from '@angular/router';
+import { productServiceFactory } from '../service/product/product-factory';
 
 @Component({
   selector: 'app-product',

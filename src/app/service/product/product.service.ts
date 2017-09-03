@@ -9,10 +9,17 @@ export class ProductService {
     { id: 2, name: 'Product2', price: 2000, imageUrl: 'http://test.com', createdDate: new Date('11-10-1987') },
     { id: 3, name: 'Product3', price: 3000, imageUrl: 'http://test.com', createdDate: new Date('11-10-1987') }
   ];
-  constructor() { }
+  constructor(private isLoggedIn: boolean) { }
 
-  getProducts():  Observable<Product[]> {
-    return Observable.of(this.products);
+  getProducts(): Observable<Product[]> {
+    console.log(this.isLoggedIn);
+    if (this.isLoggedIn) {
+      return Observable.of(this.products);
+    }
+    else {
+      return null;
+    }
+
   }
 
   addProduct() {

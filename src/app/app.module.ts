@@ -19,7 +19,7 @@ import { AuthGuard } from './service/guard/auth.guard';
 import { PostComponent } from './post/post.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptorService } from './service/httpinterceptor/api-interceptor.service';
-
+import { productServiceFactory } from './service/product/product-factory';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { ApiInterceptorService } from './service/httpinterceptor/api-interceptor
     OrderModule,
     RoutingModule
   ],
-  providers: [{ provide: ProductService, useClass: ProductService },
+  providers: [
   { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard,
   { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService , multi: true }
   ],
