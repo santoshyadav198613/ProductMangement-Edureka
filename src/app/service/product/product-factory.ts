@@ -1,7 +1,7 @@
 import { ProductService } from './product.service';
 import { LoginService } from '../login/login.service';
 
-const productFactory = (loginService: LoginService) => {
+export function productFactory(loginService: LoginService) {
     console.log('logeedin' + loginService.isLoggedIn)
     return new ProductService(loginService.isLoggedIn);
 }
