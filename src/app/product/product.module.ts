@@ -9,6 +9,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { AuthGuard } from '../service/guard/auth.guard';
 import { ProductResolveGuard } from '../service/product/product-resolve.guard';
 import { productServiceFactory } from '../service/product/product-factory';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +29,9 @@ import { productServiceFactory } from '../service/product/product-factory';
     )
   ],
   declarations: [ProductComponent, ProductlistComponent,
-    ProductdetailsComponent],
-  providers: [productServiceFactory, ProductResolveGuard]
+    ProductdetailsComponent,
+    ProductEditComponent],
+  providers: [productServiceFactory, ProductResolveGuard],
+  entryComponents: [ProductEditComponent]
 })
 export class ProductModule { }

@@ -1,11 +1,11 @@
-<form class="col-md-6" #loginForm="ngForm" (submit)="loginUser()">
-  <div class="form-group">
-    <input type="text" class="form-control" name="userName" [(ngModel)]="login.userName" placeholder="UserName">
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" name="passeword" [(ngModel)]="login.password" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary">Login</button>
+<form [formGroup]="loginForm"  class="example-form" novalidate (submit)="loginUser()">
+  <md-form-field class="example-full-width">
+    <input type="text"  required mdInput name="userName" formControlName="userName" placeholder="UserName">
+  </md-form-field>
+  <md-form-field class="example-full-width">
+    <input type="password"  required mdInput name="passeword" formControlName="password" placeholder="Password">
+  </md-form-field>
+  <div>
+    <button [disabled]="loginForm.invalid" md-raised-button color="primary">Login</button>
   </div>
 </form>

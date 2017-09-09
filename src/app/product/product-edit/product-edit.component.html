@@ -1,0 +1,16 @@
+<h2 md-dialog-title>Edit Product For Id: {{product.id}}</h2>
+<md-dialog-content>
+  <form #productEdit="ngForm">
+    <md-form-field class="example-full-width">
+      <input required mdInput  type="text" [(ngModel)]="product.name" name="name" placeholder="Product Name">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input required mdInput  type="number" [(ngModel)]="product.price" name="price" placeholder="Price">
+    </md-form-field>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>No</button>
+  <button md-button (click)="save()">Save</button>
+</md-dialog-actions>
+ 

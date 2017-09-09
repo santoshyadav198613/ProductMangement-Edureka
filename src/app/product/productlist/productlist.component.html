@@ -19,6 +19,9 @@
         CreatedDate
       </th>
       <th>Details</th>
+      <th>
+        Edit
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +33,7 @@
         {{product.name | uppercase}}
       </td>
       <td>
-        {{product.price | customcurrency  : "$" }}
+        {{product.price | customcurrency : "$" }}
       </td>
       <td>
         {{product.createdDate | date }}
@@ -38,9 +41,13 @@
       <td>
         <button [routerLink]="['/product',product.id]" class="btn btn-primary">Details</button>
       </td>
-      </tr>
+      <td>
+        <button md-raised-button color="primary" (click)="openEdit(product)">Edit</button>
+      </td>
+
+    </tr>
   </tbody>
-</table> 
+</table>
 
 
 <button class="btn btn-primary" (click)="getProducts()">Send Product</button>

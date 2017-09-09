@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RoutingModule } from './routing/routing.module';
 import { OrderModule } from './order/order.module';
 import { SharedModule } from './shared/shared.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -32,7 +33,8 @@ import { productServiceFactory } from './service/product/product-factory';
     BrowserModule,
     SharedModule,
     OrderModule,
-    RoutingModule
+    RoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
   { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard,
