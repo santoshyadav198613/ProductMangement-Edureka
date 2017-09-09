@@ -14,12 +14,12 @@ export class AppComponent {
   productManger = 'Employee1';
   isVisible = false;
 
-  constructor(@Inject(APP_CONFIG) config: AppConfig) {
-      console.log(config);
+  constructor() {
+
   }
 
   toggle() {
-    
+
     this.isVisible = !this.isVisible;
   }
 }
