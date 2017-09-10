@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
 import { Product } from './product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APP_CONFIG } from '../apiProvider/app.apiconfig';
 import { AppConfig } from '../apiProvider/IAppConfig';
 
@@ -17,11 +17,13 @@ export class ProductService {
     @Inject(APP_CONFIG) private config: AppConfig) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.config.apiEndPoint + 'api/product');
+    let headers = new HttpHeaders().set('token', 'testToken');
+    return this.http.get<Product[]>(this.config.apiEndPoint + 'api/product', { headers: headers });
     // return Observable.of(this.products);
   }
 
   addProduct(product: Product) {
-    return this.http.post(this.config.apiEndPoint + 'api/product', product);
+    let headers = new HttpHeaders().set('token', 'testToken');
+    return this.http.post(this.config.apiEndPoint + 'api/product', product, { headers: headers });
   }
 }

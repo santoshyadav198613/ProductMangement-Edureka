@@ -20,7 +20,7 @@ import { AuthGuard } from './service/guard/auth.guard';
 import { PostComponent } from './post/post.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptorService } from './service/httpinterceptor/api-interceptor.service';
-import { productServiceFactory } from './service/product/product-factory';
+// import { productSerkviceFactory } from './service/product/product-factory';
 
 @NgModule({
   declarations: [

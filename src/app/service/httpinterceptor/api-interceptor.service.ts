@@ -9,7 +9,7 @@ export class ApiInterceptorService implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let request = req.clone({ headers: req.headers.set('token', 'thisisdummytoken').set('userToken', 'thisisuserToken') })
+    let request = req.clone({ headers: req.headers.set('token', 'testToken') })
     return next.handle(request);
   }
 }
