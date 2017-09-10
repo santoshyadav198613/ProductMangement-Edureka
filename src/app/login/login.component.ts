@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     let result = this.loginService.login(this.loginForm.value);
     if (result) {
+      localStorage.setItem('userName', this.loginForm.controls['userName'].value);
       this.routerService.navigate(['/order']);
     }
     else {

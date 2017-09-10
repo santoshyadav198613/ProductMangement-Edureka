@@ -1,3 +1,4 @@
+import { ProductService } from '../service/product/product.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -8,7 +9,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { AuthGuard } from '../service/guard/auth.guard';
 import { ProductResolveGuard } from '../service/product/product-resolve.guard';
-import { productServiceFactory } from '../service/product/product-factory';
+
 import { ProductEditComponent } from './product-edit/product-edit.component';
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
   declarations: [ProductComponent, ProductlistComponent,
     ProductdetailsComponent,
     ProductEditComponent],
-  providers: [productServiceFactory, ProductResolveGuard],
+  providers: [ProductService, ProductResolveGuard],
   entryComponents: [ProductEditComponent]
 })
 export class ProductModule { }

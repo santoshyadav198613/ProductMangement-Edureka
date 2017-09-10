@@ -1,6 +1,10 @@
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Product } from './product';
+import { HttpClient } from '@angular/common/http';
+import { APP_CONFIG } from '../apiProvider/app.apiconfig';
+import { AppConfig } from '../apiProvider/IAppConfig';
+
 
 @Injectable()
 export class ProductService {
@@ -9,20 +13,15 @@ export class ProductService {
     { id: 2, name: 'Product2', price: 2000, imageUrl: 'http://test.com', createdDate: new Date('11-10-1987') },
     { id: 3, name: 'Product3', price: 3000, imageUrl: 'http://test.com', createdDate: new Date('11-10-1987') }
   ];
-  constructor(private isLoggedIn: boolean) { }
+  constructor(private http: HttpClient,
+    @Inject(APP_CONFIG) private config: AppConfig) { }
 
   getProducts(): Observable<Product[]> {
-    console.log(this.isLoggedIn);
-    if (this.isLoggedIn) {
-      return Observable.of(this.products);
-    }
-    else {
-      return null;
-    }
-
+    return this.http.get<Product[]>(this.config.apiEndPoint + 'api/product');
+    // return Observable.of(this.products);
   }
 
-  addProduct() {
-    this.products.push({ id: 4, name: 'Product4', price: 4000, imageUrl: 'http://test.com', createdDate: new Date('11-10-1987') });
+  addProduct(product: Product) {
+    return this.http.post(this.config.apiEndPoint + 'api/product', product);
   }
 }
